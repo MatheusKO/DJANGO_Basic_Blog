@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  All Posts
+{% endblock %}
+
+{% block content %}
+  {% comment %} {% include "challenges/includes/header.html" with active_page="index" %} to pass context {% endcomment %}
+  <ul>
+    {% for post in posts %}
+    <li>
+      <a href="{% url 'post' post.split|join:"-" %}">{{ post|title }}</a>
+      <p> url: {{ post.split|join:"-" }} </p>
+      {% comment %} <a href="{{month}}">{{ month|title }}</a> Also works {% endcomment %}
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
