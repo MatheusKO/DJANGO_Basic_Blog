@@ -1,0 +1,36 @@
+header {
+  width: 100%;
+  height: 5rem;
+  background-color: #183054;
+}
+
+header nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+  flex-flow: row;
+}
+
+header nav a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+header nav a:hover,
+header nav a:active {
+  color: #747622;
+}
+
+.nav-home {
+  width: 70px;
+  font-weight: bold;
+}
+
+.nav-title {
+  width: 100px;
+  margin: auto 0 auto calc(50% - 130px);
+}

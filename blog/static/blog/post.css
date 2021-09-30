@@ -1,0 +1,42 @@
+.post {
+  margin: 1rem auto;
+  border: 1px solib black;
+  border-radius: 12px;
+  background-color: #375480;
+  padding: 5px 0;
+  max-width: 600px;
+}
+
+.post-header {
+  margin: 5px 10px;
+  background-size: cover;
+  background-color: rgba(25, 27, 51, 0.898);
+  border-radius: 12px;
+  padding: 15px;
+  color: rgb(196, 196, 196);
+}
+
+.post-header:hover {
+  background-image: linear-gradient(to right, rgba(49, 50, 51, 0.768), rgba(99, 96, 98, 0));
+}
+
+.post-header-info {
+  max-width: 50%;
+  text-align: left;
+}
+
+.content {
+  margin: 10px;
+  padding: 10px;
+  background-color: #4f72ae;
+  border-radius: 12px;
+  color: whitesmoke;
+}
+
+h2, h5 {
+  margin-top: 0px;
+}
+
+h5 {
+  margin-bottom: 0px;
+}

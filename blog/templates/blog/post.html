@@ -1,19 +1,33 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_title %}
   {{ title|title }}
 {% endblock %}
 
+{% block css_files %}
+  <link rel="stylesheet" href="{% static "blog/includes/header.css" %}">
+  <link rel="stylesheet" href="{% static "blog/post.css" %}">
+{% endblock %}
+
 {% block content %}
-  {% comment %} {% include "challenges/includes/header.html" with active_page="challenge" %} to pass context {% endcomment %}
-  
-  <h1> {{ title|title }}</h1>
-  <h5> By {{ author }} </h5>
-  <h5> Last update: {{ last_update }} </h5>
-  {% if image_url is not None %}
-    {{ image_url }}
-  {% else %}
-    <p class="fallback">There is no image for this post yet!</p>
-  {% endif %}
-  <h2>{{ content }}</h2>
+  {% include "blog/includes/header.html" %}
+  <div class="post">
+    <div class="post-header" style="background-image: linear-gradient(to right, rgba(49, 50, 51, 0.768), rgba(99, 96, 98, 0)), url('{{ image_url }}');">
+      <div class="post-header-info">
+        <h2> {{ title|title }}</h1>
+        <h5> By {{ author }} </h5>
+        <h5> Last update: {{ last_update }} </h5>
+      </div>
+      
+      {% comment %} {% if image_url is not None %}
+        <img class="image" src="{{ image_url }}" alt="Beth Harmon studying chess" />
+      {% else %}
+        <p class="fallback">There is no image for this post yet!</p>
+      {% endif %} {% endcomment %}
+    </div>
+    <div class="content">
+      <p>{{ content }}</p>
+    </div>    
+  </div> 
 {% endblock %}
