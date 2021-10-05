@@ -17,7 +17,7 @@
       <div class="post-header-info">
         <h2> {{ title|title }}</h1>
         <h5> By {{ author }} </h5>
-        <h5> Last update: {{ last_update }} </h5>
+        <h5> Last update: {{ last_update|date:"d-M-y" }} </h5>
       </div>
       
       {% comment %} {% if image_url is not None %}
@@ -25,9 +25,12 @@
       {% else %}
         <p class="fallback">There is no image for this post yet!</p>
       {% endif %} {% endcomment %}
+
+      {% comment %} -----
+      <img src="{$ static "blog/images/"|add:post.image %}" alt="{{ post.title }}"> {% endcomment %}
     </div>
     <div class="content">
-      <p>{{ content }}</p>
+      <p>{{ content|linebreaks }}</p>
     </div>
   </div> 
 {% endblock %}
