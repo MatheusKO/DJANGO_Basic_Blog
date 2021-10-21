@@ -13,11 +13,11 @@
 {% block content %}
   {% include "blog/includes/header.html" %}
   <div class="post">
-    <div class="post-header" style="background-image: linear-gradient(to right, rgba(49, 50, 51, 0.768), rgba(99, 96, 98, 0)), url('{{ image_url }}');">
+    <div class="post-header" style="background-image: linear-gradient(to right, rgba(49, 50, 51, 0.768), rgba(99, 96, 98, 0)), url('../../static/blog/images/{{ image_name }}');">
       <div class="post-header-info">
         <h2> {{ title|title }}</h1>
         <h5> By {{ author }} </h5>
-        <h5> Last update: {{ last_update|date:"d-M-y" }} </h5>
+        <h5> Date: {{ date|date:"d-M-y" }} </h5>
       </div>
       
       {% comment %} {% if image_url is not None %}
@@ -31,6 +31,10 @@
     </div>
     <div class="content">
       <p>{{ content|linebreaks }}</p>
+      
+      {% comment %}  <div class="post-footer">
+        <p>TAGS: {{ tags }}</p>
+      </div> {% endcomment %}
     </div>
   </div> 
 {% endblock %}
