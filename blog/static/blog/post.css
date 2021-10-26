@@ -33,9 +33,17 @@
   color: whitesmoke;
 }
 
-/* .post-footer {
+.tag {
+  background-color: rgb(93, 116, 133);
+  color: rgb(238, 234, 234);
+  padding: 5px;
+  margin: 3px;
+  border-radius: 10px;
+}
 
-} */
+.tag:hover {
+  background-color: #375480;
+}
 
 h2, h5 {
   margin-top: 0px;

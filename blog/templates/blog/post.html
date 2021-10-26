@@ -18,6 +18,13 @@
         <h2> {{ title|title }}</h1>
         <h5> By {{ author }} </h5>
         <h5> Date: {{ date|date:"d-M-y" }} </h5>
+        <p>
+          {% for tag in tags %}
+            <span class="tag">
+              {{ tag.caption }}
+            </span>            
+          {% endfor %}
+        </p>
       </div>
       
       {% comment %} {% if image_url is not None %}
@@ -31,10 +38,6 @@
     </div>
     <div class="content">
       <p>{{ content|linebreaks }}</p>
-      
-      {% comment %}  <div class="post-footer">
-        <p>TAGS: {{ tags }}</p>
-      </div> {% endcomment %}
     </div>
   </div> 
 {% endblock %}
