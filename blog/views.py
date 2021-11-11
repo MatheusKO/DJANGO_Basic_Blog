@@ -1,35 +1,40 @@
 from django.shortcuts import get_object_or_404, render
 from django.urls.base import reverse
 
+from django.views.generic import ListView, DetailView
+
 from .models import Post
 # Create your views here.
 
 
-def index(request):
-    latest_posts = Post.objects.all().order_by("-date")[:3]
+class IndexPostsListView(ListView):
+    template_name = "blog/index.html"
+    model = Post
 
-    return render(request, "blog/index.html", {
-        "posts": latest_posts
-    })
+    context_object_name = "posts"
 
-
-def posts(request):
-    all_posts = Post.objects.all().order_by("-date")
-    return render(request, "blog/posts.html", {
-        "posts": all_posts
-    })
+    def get_queryset(self):
+        base_query = super().get_queryset()
+        data = base_query.order_by("-date")[:3]
+        return data
 
 
-def post_detail(request, slug):
+class AllPostsListView(ListView):
+    template_name = "blog/posts.html"
+    model = Post
 
-    post = get_object_or_404(Post, slug=slug)
+    context_object_name = "posts"
 
-    return render(request, "blog/post.html", {
-        "title": post.title,
-        "author": post.author,
-        "date": post.date,
-        "content": post.content,
-        "image_name": post.image_name,
-        "tags": post.tags.all()
-        # TODO exhibit tags in post-detail-page
-    })
+    def get_queryset(self):
+        base_query = super().get_queryset()
+        data = base_query.order_by("-date")
+        return data
+
+
+class PostDetailView(DetailView):
+    template_name = "blog/post.html"
+    model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
